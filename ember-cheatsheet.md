@@ -41,3 +41,33 @@ does the same as:
     {{#each song in songs}} ... {{song.name}} ... {{/each}}
 
 An added bonus is that you can still access `model.artist` by doing `{{artist}}` inside the each block.
+
+
+## 2. Routes
+
+`ApplicationRoute` responds to `/` if you haven't setup anything.
+
+    App.ApplicationRoute = Ember.Route.extend({
+      model: function() {
+        return ...
+      }
+    });
+
+You can map urls to routes by doing this:
+
+    App.Router.map(function() {
+      this.resource('album', { path: '/album/:bananas_id' }); //bananas for added clarity
+    });
+
+`album` here is the name of the resource.
+That slug (here `:bananas_id`) is then put into a params object `params.bananas_id`.
+The slug needs to end with `_id`. (`album_id` is probably the more helpful naming, I used `:bananas_id` for better illustration).
+
+You need to define a route for the `album` resource (if you haven't ember will freak out):
+
+    App.AlbumRoute = Ember.Route.extend({
+      model: function(params) {
+        return ...
+      }
+    });
+
