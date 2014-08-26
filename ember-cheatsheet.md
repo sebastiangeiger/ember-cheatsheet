@@ -28,7 +28,7 @@ A route will return a model in the `model: function()..` part.
 Use `{{name}}` to access `model.name`.
 
 If your `model:` hook returns an array: `{{#each}} .. {{/each}}`.
-Use `{{name}}` to access `model[i].name`.
+Use `{{name}}` inside the each block to access `model[i].name`.
 
 If you need to access a dynamic property from inside a html tag, use `{{bindAttr src=imageUrl}}`.
 
