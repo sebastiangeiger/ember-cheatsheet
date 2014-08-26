@@ -5,7 +5,7 @@
 
     <script type="text/x-handlebars">
       <header>..</header>
-      {{outlet}} <-- this displays the route specific template
+      {{outlet}} <-- this displays the route specific template (Rails: yield)
       <footer>..</footer>
     </script>
 
