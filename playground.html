@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2014 by anonymous (http://jsbin.com/lezoyihuwami/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ember Starter Kit</title>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v1.3.0.js"></script>
+  <script src="http://builds.emberjs.com/tags/v1.7.0/ember.js"></script>
+<style id="jsbin-css">
+/* Put your CSS here */
+html, body {
+  margin: 20px;
+}
+
+</style>
+</head>
+<body>
+
+  <script type="text/x-handlebars">
+    <h2>Welcome to Ember.js</h2>
+
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="index">
+    <ul>
+    {{#each item in model}}
+      <li>{{item}}</li>
+    {{/each}}
+    </ul>
+  </script>
+
+<script id="jsbin-javascript">
+App = Ember.Application.create();
+
+App.Router.map(function() {
+    this.resource('album', { path: '/album/:album_id'}, function(){
+      this.resource('song', function(){
+        this.route('play');
+        });
+      });
+});
+
+App.IndexRoute = Ember.Route.extend({
+  model: function() {
+    return ['green', 'yellow', 'blue'];
+  }
+});
+
+</script>
+</body>
+</html>
